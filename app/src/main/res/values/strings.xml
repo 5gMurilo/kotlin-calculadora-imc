@@ -9,5 +9,6 @@
     <string name="sexM">Masc.</string>
 
     <string name="btnCalcular">Calular IMC</string>
-
+    <string name="imgDesc">Logo fita métrica</string>
+    <string name="calcular">Calcular</string>
 </resources>
