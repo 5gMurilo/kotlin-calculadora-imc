@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">calculadora-imc</string>
+    <string name="app_name">IMC</string>
+
+    <string name="title">Calculadora de IMC</string>
+    <string name="inputaltura">Insira sua altura</string>
+    <string name="inputpeso">Insira seu peso</string>
+
+    <string name="sexF">Fem.</string>
+    <string name="sexM">Masc.</string>
+
+    <string name="btnCalcular">Calular IMC</string>
+
 </resources>
