@@ -2,8 +2,8 @@
     <string name="app_name">IMC</string>
 
     <string name="title">Calculadora de IMC</string>
-    <string name="inputaltura">Insira sua altura</string>
-    <string name="inputpeso">Insira seu peso</string>
+    <string name="inputaltura">Insira sua altura (em cm)</string>
+    <string name="inputpeso">Insira seu peso (em kg)</string>
 
     <string name="sexF">Fem.</string>
     <string name="sexM">Masc.</string>
