@@ -2,7 +2,7 @@
     <string name="app_name">IMC</string>
 
     <string name="title">Calculadora de IMC</string>
-    <string name="inputaltura">Insira sua altura (em cm)</string>
+    <string name="inputaltura">Insira sua altura (em metros)</string>
     <string name="inputpeso">Insira seu peso (em kg)</string>
 
     <string name="sexF">Fem.</string>
@@ -11,4 +11,7 @@
     <string name="btnCalcular">Calular IMC</string>
     <string name="imgDesc">Logo fita métrica</string>
     <string name="calcular">Calcular</string>
+    <string name="calcResult">Resultado do calculo</string>
+    <string name="yourIMCis">Seu imc é:</string>
+    <string name="backToHome">Voltar à pagina inicial</string>
 </resources>
