@@ -84,4 +84,30 @@
         android:textSize="24sp"
         />
 
+    <TextView
+        android:id="@+id/conditionTxt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/IMCis"
+        app:layout_constraintVertical_bias="0.1"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        />
+
+    <TextView
+        android:id="@+id/ideal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/conditionTxt"
+        app:layout_constraintVertical_bias="0.1"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,4 +14,9 @@
     <string name="calcResult">Resultado do calculo</string>
     <string name="yourIMCis">Seu imc é:</string>
     <string name="backToHome">Voltar à pagina inicial</string>
+    <string name="abaixoDoPeso">você está abaixo do peso!</string>
+    <string name="pesoIdeal">parabéns, seu peso é ideal!</string>
+    <string name="poucoAcimaDoPeso">seu peso está um pouco acima do ideal!</string>
+    <string name="acimaDoPeso">você está acima do peso ideal!</string>
+    <string name="obeso">Você está obeso!</string>
 </resources>

@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(this, ResultActivity::class.java).apply {
                     putExtra("imc", imc)
                     putExtra("sex", "masc")
+                    putExtra("alt", a)
                 })
             }else{
                 Toast.makeText(this, "Insira valores válidos nos campos", Toast.LENGTH_SHORT).show()
@@ -48,6 +49,7 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(this, ResultActivity::class.java).apply {
                     putExtra("imc", imc)
                     putExtra("sex","fem")
+                    putExtra("alt", a)
                 })
             }else{
                 Toast.makeText(this, "Insira valores válidos nos campos", Toast.LENGTH_SHORT).show()
