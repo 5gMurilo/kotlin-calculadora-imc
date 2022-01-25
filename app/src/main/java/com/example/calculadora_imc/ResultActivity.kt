@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_result.*
+
 class ResultActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -12,90 +13,62 @@ class ResultActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.title = ""
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        showIMC()
 
+        calls()
     }
 
-    private fun showIMC(){
-        val imc: Float? = intent.extras?.getFloat("imc")
-        val altura: Float? = intent.extras?.getString("alt")?.toFloat()
-        val sexo: String? = intent.extras?.getString("sex")
+    private fun calls(){
+        val imc = Imc(
+            peso = intent.extras?.get("peso").toString().toFloat(),
+            altura = intent.extras?.get("alt").toString().toFloat(),
+            sexo = intent.extras?.getString("sex")
+        )
 
-        IMC.text = String.format("%.2f", imc)
+        imc.showImc()
 
-        if(sexo == "masc"){
-            if (imc != null) {
-                when {
-                    imc < 20.7f -> {
-                        conditionTxt.setTextColor(Color.parseColor("#6A4C93"))
-                        conditionTxt.text = getString(R.string.abaixoDoPeso)
-                        ideal.text = calcPesoIdeal(altura, 24f,::calculaPeso)
-                    }
-                    imc in 20.7f..26.4f -> {
-                        conditionTxt.setTextColor(Color.parseColor("#8AC926"))
-                        conditionTxt.text = getString(R.string.pesoIdeal)
-                    }
-                    imc in 26.5f.. 27.8f -> {
-                        conditionTxt.setTextColor(Color.parseColor("#FFCA3A"))
-                        conditionTxt.text = getString(R.string.poucoAcimaDoPeso)
-                        ideal.text = calcPesoIdeal(altura, 24f,::calculaPeso)
-                    }
-                    imc in 27.8f.. 31.1f -> {
-                        conditionTxt.setTextColor(Color.parseColor("#FA8734"))
-                        conditionTxt.text = getString(R.string.acimaDoPeso)
-                        ideal.text = calcPesoIdeal(altura, 24f,::calculaPeso)
-                    }
-                    else -> {
-                        conditionTxt.setTextColor(Color.parseColor("#F4442E"))
-                        conditionTxt.text = getString(R.string.obeso)
-                        ideal.text = calcPesoIdeal(altura, 24f,::calculaPeso)
-                    }
+        conditionTxt.text = imc.conditionTxt
+        ideal.text = imc.ideal
+
+        val sex = imc.sexo
+        val resultImcCalc = imc.calcularImc()
+
+        if(sex == "masc"){
+            when{
+                resultImcCalc!! < 20.7f -> {
+                    conditionTxt.setTextColor(Color.parseColor("#6A4C93"))
+                }
+                resultImcCalc in 20.8f.. 26.4f -> {
+                    conditionTxt.setTextColor(Color.parseColor("#8AC926"))
+                }
+                resultImcCalc in 26.5f..27.8f -> {
+                    conditionTxt.setTextColor(Color.parseColor("#FFCA3A"))
+                }
+                resultImcCalc in 27.8f..31.1f -> {
+                    conditionTxt.setTextColor(Color.parseColor("#FA8734"))
+                }
+                else -> {
+                    conditionTxt.setTextColor(Color.parseColor("#F4442E"))
                 }
             }
         }else{
-            if (imc != null) {
-                when {
-                    imc < 19.1f -> {
-                        conditionTxt.setTextColor(Color.parseColor("#6A4C93"))
-                        conditionTxt.text = getString(R.string.abaixoDoPeso)
-                        ideal.text = calcPesoIdeal(altura, 22.5f,::calculaPeso)
-                    }
-                    imc in 19.1f..25.8f -> {
-                        conditionTxt.setTextColor(Color.parseColor("#8AC926"))
-                        conditionTxt.text = getString(R.string.pesoIdeal)
-                    }
-                    imc in 25.9f.. 27.3f -> {
-                        conditionTxt.setTextColor(Color.parseColor("#FFCA3A"))
-                        conditionTxt.text = getString(R.string.poucoAcimaDoPeso)
-                        ideal.text = calcPesoIdeal(altura, 22.5f,::calculaPeso)
-                    }
-                    imc in 27.4f .. 32.3f -> {
-
-                        conditionTxt.setTextColor(Color.parseColor("#FA8734"))
-                        conditionTxt.text = getString(R.string.acimaDoPeso)
-                        ideal.text = calcPesoIdeal(altura, 22.5f,::calculaPeso)
-
-                    }
-                    else -> {
-                        conditionTxt.setTextColor(Color.parseColor("#F4442E"))
-                        conditionTxt.text = getString(R.string.obeso)
-                        ideal.text = calcPesoIdeal(altura, 22.5f,::calculaPeso)
-                    }
+            when {
+                resultImcCalc!! < 19.1f -> {
+                    conditionTxt.setTextColor(Color.parseColor("#6A4C93"))
                 }
-
+                resultImcCalc in 19.1f..25.8f -> {
+                    conditionTxt.setTextColor(Color.parseColor("#8AC926"))
+                }
+                resultImcCalc in 25.9f..27.3f -> {
+                    conditionTxt.setTextColor(Color.parseColor("#FFCA3A"))
+                }
+                resultImcCalc in 27.4f..32.3f -> {
+                    conditionTxt.setTextColor(Color.parseColor("#FA8734"))
+                }
+                else -> {
+                    conditionTxt.setTextColor(Color.parseColor("#F4442E"))
+                }
             }
         }
-
     }
 
-    private fun calculaPeso(a:Float?, i:Float?) = i?.times((a?.times(a)!!))
-
-    private fun calcPesoIdeal(
-        altura:Float?,
-        imc:Float?,
-        formula: (Float?, Float?) -> Float?
-    ):String{
-        var kgIdeal = formula(altura, imc)
-        return "O seu peso ideal é ${String.format("%.2f", kgIdeal)}kg"
-    }
 }

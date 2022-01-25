@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.widget.doAfterTextChanged
+import androidx.core.widget.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -34,22 +34,20 @@ class MainActivity : AppCompatActivity() {
     private fun calcularIMC (p:String?, a: String?){
         if(rbMasc.isChecked ){
             if (p != null && a != null) {
-                val imc:Float = p.toFloat() / (a.toFloat() * a.toFloat())
                 startActivity(Intent(this, ResultActivity::class.java).apply {
-                    putExtra("imc", imc)
                     putExtra("sex", "masc")
                     putExtra("alt", a)
+                    putExtra("peso",p)
                 })
             }else{
                 Toast.makeText(this, "Insira valores válidos nos campos", Toast.LENGTH_SHORT).show()
             }
         }else if(rbFem.isChecked){
             if (p != null && a != null) {
-                val imc:Float = p.toFloat() / (a.toFloat() * a.toFloat())
                 startActivity(Intent(this, ResultActivity::class.java).apply {
-                    putExtra("imc", imc)
-                    putExtra("sex","fem")
-                    putExtra("alt", a)
+                    putExtra("sex", "fem")
+                    putExtra("alt", a.toFloat())
+                    putExtra("peso",p.toFloat())
                 })
             }else{
                 Toast.makeText(this, "Insira valores válidos nos campos", Toast.LENGTH_SHORT).show()
