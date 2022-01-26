@@ -1,6 +1,5 @@
 package com.example.calculadora_imc
 
-
 class Imc(
     var peso: Float?,
     var altura: Float?,
@@ -19,14 +18,12 @@ class Imc(
 
     private fun calcImc(a: Float?, p: Float?) = p?.div((a?.times(a)!!))
 
-    //calcula o peso ideal
     private fun pesoIdeal(imc: Float): String {
-        val imc = calcularImc()
+        // o imc passado como parâmetro é o imc recomendado para determinado sexo
         val kgIdeal = calculaPeso(altura, imc)
         return "O seu peso ideal é em média ${String.format("%.2f", kgIdeal)}KGs"
     }
 
-    //calcula o IMC
     fun calcularImc(): Float? {
         return calcImc(altura, peso)
     }
