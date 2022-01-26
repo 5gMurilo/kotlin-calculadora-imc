@@ -58,22 +58,22 @@ class Imc(
             when {
                 imc!! < 19.1f -> {
                     conditionTxt = "você está abaixo do peso"
-                    ideal = pesoIdeal(26f)
+                    ideal = pesoIdeal(25f)
                 }
                 imc!! in 19.1f..25.8f -> {
                     conditionTxt = "Parabéns, seu peso é ideal!"
                 }
                 imc!! in 25.9f..27.3f -> {
                     conditionTxt = "Seu peso está marginalmente acima do ideal!"
-                    ideal = pesoIdeal(26f)
+                    ideal = pesoIdeal(25f)
                 }
                 imc!! in 27.4f..32.3f -> {
                     conditionTxt = "Você está acima do peso ideal!"
-                    ideal = pesoIdeal(26f)
+                    ideal = pesoIdeal(25f)
                 }
                 else -> {
                     conditionTxt = "Você está obesa!"
-                    ideal = pesoIdeal(26f)
+                    ideal = pesoIdeal(25f)
                 }
             }
         }
